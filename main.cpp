@@ -5,31 +5,32 @@
 
 using namespace std;
 
-int getValidInput() {
-    int n = 0;
-    bool valid = false;
+int getValidInput(int min = 3) {
+    int n;
+    bool valid;
 
-    while (!valid) {
-        cout << "Enter the size of the magic square (>=3): ";
-        if (cin >> n && n >= 3) {
-            valid = true;
+    do {
+        cout << "Enter the size of the magic square (>= " << min << "): ";
+        if (cin >> n && n >= min) {
+            valid = true; 
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         } else {
-            cout << "Invalid input. Please enter a number >= 3.\n";
+            cout << "Invalid input. Please enter a number >= " << min << ".\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            valid = false;
         }
-    }
+    } while (!valid);
 
     return n;
 }
 
 int main() {
-    int size = getValidInput();
-    clearScreen();
+    int size = getValidInput(); 
 
-    MagicSquare magicSquare(size);
-    magicSquare.draw();
+    clearScreen(); 
+
+    drawMagicSquare(size); 
 
     return 0;
 }
