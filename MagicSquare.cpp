@@ -3,7 +3,6 @@
 #include <iostream>
 using namespace std;
 
-// رسم خلية واحدة
 void drawCell(int row, int col, int number, int startX, int startY, int cellWidth, int cellHeight) {
     int x = startX + col * cellWidth;
     int y = startY + row * cellHeight;
@@ -20,12 +19,12 @@ void drawCell(int row, int col, int number, int startX, int startY, int cellWidt
     goToXY(x, y + 2);
     cout << "+----+";
 
-    delay(200); 
+    delay(500); 
     setColor(37); 
 }
 
 void drawMagicSquare(int n) {
-    const int cellWidth = 6;
+    const int cellWidth = 8;
     const int cellHeight = 3;
     const int startX = 5;
     const int startY = 2;

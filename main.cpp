@@ -6,22 +6,19 @@
 using namespace std;
 
 int getValidInput(int min = 3) {
+    string line; 
     int n;
     bool valid;
-
     do {
-        cout << "Enter the size of the magic square (>= " << min << "): ";
-        if (cin >> n && n >= min) {
-            valid = true; 
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        } else {
-            cout << "Invalid input. Please enter a number >= " << min << ".\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            valid = false;
+        cout << "Enter size (>= " << min << " and odd): ";
+        getline(cin, line);
+        valid = (line.find_first_not_of("0123456789") == string::npos);
+        if (valid) {
+            n = stoi(line);
+            valid = (n >= min && n % 2 != 0);
         }
+        if (!valid) cout << "Invalid input. Enter only a number >=3 \n";
     } while (!valid);
-
     return n;
 }
 
